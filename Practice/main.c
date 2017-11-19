@@ -346,34 +346,22 @@ int main()
 }
 */
 
-//Bai 3.9 not ok
+//Bai 3.9 ok
 /*
 #include <stdio.h>
 #include <stdlib.h>
 int main()
 {
-    int a,ma = 0;
+    int ma = 0;
     char kitu;
-    printf("Chon yeu cau can thuc hien: \n");
-    printf("1. Nhập vào một ký tự và in ra mã ASCII tương ứng với các ký tự đó.\n");
-    printf("2. Nhập vào một số nguyên (từ 1 đến 255) và in ra kí tự có mã ASCII tương ứng.\n");
-    scanf("%d",&a);
-    switch (a)
-    {
-        case 1:
-            printf("Nhap ki tu: ");
-            kitu=getchar();
-            printf("Ma cua ki tu do la: %d\n", kitu);
-        break;
-        case 2:
-            printf("Nhap ma cua ki tu: ");
-            scanf("%d",ma);
-            printf("Ki tu do la: %c", ma);
-            break;
-        default:
-            printf("Nhap dung so cua yeu cau. Thu lai.");
-            break;
-    }
+        printf("Nhap ki tu: ");
+        kitu=getchar();
+        fflush(stdin);
+        printf("Ma cua ki tu do la: %d\n", kitu);
+        fflush(stdin);
+        printf("Nhap ma cua ki tu: ");
+        scanf("%d",&ma);
+        printf("Ki tu do la: %c\n",ma);
     return (0);
 }
 */
@@ -490,24 +478,36 @@ int main()
 }
 */
 
-//Bai 4.4 not oke
+//Bai 4.4 oke
+/*
 #include <stdio.h>
-#include <stdlib.h>
 int main()
 {
-    float e=1,epsilon=0;
-    int i=1,ngiaithua = 1,k;
+    float e=1,epsilon=0,i=0,ngiaithua = 1;
+    int k=1;
     do
     {
         printf("Nhap so epsilon < 1: ");
         scanf("%f",&epsilon);
     }
     while (epsilon>=1); //Nhap epsilon co dieu kien
-
-    
-    printf("Gia tri cua e la: %f",e);
+    while(1/ngiaithua>=epsilon)
+    {
+        i++;
+        ngiaithua=1;
+        for (k=1; k<=i; k++)
+        {
+            ngiaithua=ngiaithua*k;
+        }
+        if (ngiaithua<=((float)1/epsilon))
+        {
+        e=e+(float)1/ngiaithua;
+        }
+    }
+    printf("Gia tri cua e la: %.4f\n",e);
     return (0);
 }
+*/
 
 //Bai 4.5 oke
 /*
@@ -569,10 +569,192 @@ int main()
 }
  */
 
-//Bai 4.7
+//Bai 4.7 oke
+/*
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    double epsilon=0,i=0,pi,pi4=1;
+    do
+    {
+        printf("Nhap so epsilon < 1: ");
+        scanf("%lf",&epsilon);
+    }
+    while ((epsilon>=1)||(epsilon<=0)); //Nhap epsilon co dieu kien
+    while(i<=(((float)1/epsilon)-1)/2)
+    {
+        i++;
+        pi4=pi4+pow(-1,i)*((float)1/(2*i+1));
+    }
+    pi=pi4*4;
+    printf("Gia tri cua pi la: %f\n",pi);
+    return (0);
+}
+*/
 
-    
+//Bai 4.8 oke
+/*
+#include <stdio.h>
+int main()
+{
+    long a,b,i=0,k=0,UCLN=0,BCNN=0;
+    do
+    {
+    printf("Nhap so a>0: ");
+    scanf("%ld",&a);
+    }
+    while (a<=0); //Nhap a co dieu kien
+    do
+    {
+    printf("Nhap so b>0: ");
+    scanf("%ld",&b);
+    }
+    while (b<=0); //Nhap b co dieu kien
+    if (a==b) {
+        UCLN=a;
+        BCNN=a;
+    } //Neu a=b?
+    else
+    {
+        
+        if (a<b) {
+            k=a;
+            a=b;
+            k=b;
+        } //Xet truong hop a>b, neu a<b thi doi cho.
+            for (i=b; i>=1; i--) {
+                if (a%i==0&&b%i==0)
+                {
+                    UCLN=i;
+                    break;
+                }
+            } //Tim UCLN
+            i=a;
+            while (1) {
+                if (i%a==0&&i%b==0) {
+                    BCNN=i;
+                    break;
+                }
+                i++;
+            } //Tim BCNN
+    }
+    printf("Uoc chung lon nhat cua hai so do la: %ld\n",UCLN);
+    printf("Boi chung nho nhat cua hai so do la: %ld\n",BCNN);
+    return (0);
+}
+*/
 
+//Bai 4.9 oke
+/*
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    double a,b,c,x,x1,x2,delta,ix;
+    printf("Nhap he so a: ");
+    scanf("%lf",&a);
+    printf("Nhap he so b: ");
+    scanf("%lf",&b);
+    printf("Nhap he so c: ");
+    scanf("%lf",&c);
+    if (a==0) {
+        x=-c/b;
+        printf("Phuong trinh khong phai la phuong trinh bac hai, nhung co nghiem x = %lf\n",x);
+    }
+    else {
+        delta=pow(b, 2)-4*a*c;
+        if (delta==0) {
+            x=-b/(2*a);
+            printf("Phuong trinh co nghiem kep x = %lf\n",x);
+        }
+        else if (delta>0) {
+            x1=(-b+sqrt(delta))/(2*a);
+            x2=(-b-sqrt(delta))/(2*a);
+            printf("Phuong trinh co hai nghiem phan biet x1 = %lf, x2 = %lf\n",x1,x2);
+        }
+        else {
+            x=-b/(2*a);
+            ix=sqrt(-delta)/(2*a);
+            printf("Phuong trinh co nghiem phuc la x1 = %lf+%lfi, x2=%lf-%lfi\n",x,ix,x,ix);
+        }
+    }
+    return (0);
+}
+*/
 
+//Bai 4.10 oke
+/*
+#include <stdio.h>
+int main()
+{
+    int n,S=0;
+    do {
+    printf("Nhap so n<1000: ");
+    scanf("%d",&n);
+    }
+    while (n<=0||n>=1000);
+    S=S+n/100+(n%100)/10+(n%10);
+    printf("Tong cac chu so cua so do la: %d\n",S);
+    return (0);
+}
+*/
 
+//Bai 4.11 oke
+/*
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    long i,k,n,ngiaithua=1;
+    double x,S1 = 1,S2 = 1,S3 = 1;
+    printf("Nhap so n>0: ");
+    scanf("%ld",&n);
+    printf("Nhap so x: ");
+    scanf("%lf",&x);
+    for (i=1; i<=n; i++) {
+        S1=S1+pow(x, i);
+    }
+    for (i=1; i<=n; i++) {
+        S2=S2+pow(-1, i)*pow(x, i);
+    }
+    for (i=1; i<=n; i++) {
+        ngiaithua=1;
+        for (k=1; k<=i; k++) {
+            ngiaithua=ngiaithua*k;
+        }
+        S3=S3+pow(x, i)/ngiaithua;
+    }
+    printf("Tong S = 1+x+x^2+...+x^n = %.4lf\n",S1);
+    printf("Tong S = 1-x+x^2-...(-1)^n*x^n = %.4lf\n",S2);
+    printf("Tong S = 1+x/1!+x^2/2!+...+x^n/n! = %.4lf\n",S3);
+    return (0);
+}
+*/
 
+//Bai 4.12 oke
+/*
+#include <stdio.h>
+int main()
+{
+    int i=0;
+    double S=0,x=0,lonnhat=0,nhonhat=0,TBC;
+    printf("Nhap vao day so thuc cho den khi gia tri bang 0: ");
+    do {
+        scanf("%lf",&x);
+        i++;
+        S=S+x;
+        if (x>lonnhat) {
+            lonnhat=x;
+        }
+        if (x<nhonhat) {
+            nhonhat=x;
+        }
+    } while (x!=0);
+    TBC=S/i;
+    printf("Trung binh cong cua day la: %.4lf\n",TBC);
+    printf("Gia tri lon nhat cua day la: %.4lf\n",lonnhat);
+    printf("Gia tri nho nhat cua day la: %.4lf\n",nhonhat);
+    return (0);
+}
+ */
