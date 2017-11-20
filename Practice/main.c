@@ -369,7 +369,6 @@ int main()
 //Bai 4.1 oke
 /*
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
 int main()
 {
@@ -381,18 +380,15 @@ int main()
     scanf("%lf",&b);
     printf("Nhap do dai canh thu ba: ");
     scanf("%lf",&c);
-    if ((a+b>c)&&(a+c>b)&&(b+c>a))
-    {
+    if ((a+b>c)&&(a+c>b)&&(b+c>a)) {
         ktra=1;
         printf("La 3 canh tam giac ");
     }
-    else
-    {
+    else {
         ktra=0;
         printf("Khong phai la 3 canh tam giac.\n");
     }
-    if (ktra==1)
-    {
+    if (ktra==1) {
         if (a==b&&a==c&&b==c) printf("deu\n");
         else if (pow(a,2)+pow(b,2)==pow(c,2)||pow(a,2)+pow(c,2)==pow(b,2)||pow(b,2)+pow(c,2)==pow(a,2))
             printf("vuong\n");
@@ -406,7 +402,6 @@ int main()
 //Bai 4.2 oke
 /*
 #include <stdio.h>
-#include <stdlib.h>
 int main()
 {
     int x;
@@ -455,7 +450,6 @@ int main()
 //Bai 4.3 oke
 /*
 #include <stdio.h>
-#include <stdlib.h>
 int main()
 {
     int n = 0,i,giaithua=1;
@@ -512,7 +506,6 @@ int main()
 //Bai 4.5 oke
 /*
 #include <stdio.h>
-#include <stdlib.h>
 int main()
 {
     int n,S=0,i;
