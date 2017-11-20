@@ -527,7 +527,6 @@ int main()
 //Bai 4.6 oke
 /*
 #include <stdio.h>
-#include <stdlib.h>
 int main()
 {
     int n,i,ktra;
