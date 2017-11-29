@@ -743,10 +743,441 @@ int main()
             nhonhat=x;
         }
     } while (x!=0);
-    TBC=S/i;
+    TBC=S/(i-1);
     printf("Trung binh cong cua day la: %.4lf\n",TBC);
     printf("Gia tri lon nhat cua day la: %.4lf\n",lonnhat);
     printf("Gia tri nho nhat cua day la: %.4lf\n",nhonhat);
     return (0);
 }
  */
+
+//Bai 5.1 oke
+/*
+#include <stdio.h>
+int main()
+{
+    int sophantu,i=0,demsoAm=0,demsoDuong=0,demso0=0;
+    do {
+        printf("Nhap so phan tu cua day: ");
+        scanf("%d",&sophantu);
+    } while (!(sophantu>0&&sophantu<10));
+    double dayso[sophantu],tongAm=0,tongDuong=0,x;
+    for (i=0;i<sophantu;i++) {
+        printf("Nhap phan tu thu %d: ",(i+1));
+        scanf("%lf",&dayso[i]);
+        if (dayso[i]<0) {
+            tongAm=tongAm+dayso[i];
+            demsoAm++;
+        }
+        else if (dayso[i]>0) {
+            tongDuong=tongDuong+dayso[i];
+            demsoDuong++;
+        }
+        else demso0++;
+    }
+    printf("Day so vua nhap la: ");
+    for (i=0;i<sophantu;i++)
+        printf("%.2lf ",dayso[i]);
+    printf("\n");
+    printf("Trung binh cong cac so am la: %.4lf\n",(tongAm/demsoAm));
+    printf("Trung binh cong cac so duong la: %.4lf\n",(tongDuong/demsoDuong));
+    printf("So cac so 0 trong day la: %d\n", demso0);
+    printf("Nhap so x bat ki: ");
+    scanf("%lf",&x);
+    printf("Vi tri cac so trong day co gia tri bang x la: ");
+    for (i=0; i<sophantu; i++)
+        if (x==dayso[i]) printf("%d ",(i+1));
+    printf("\n");
+    return (0);
+}
+ */
+
+//Bai 5.2 not oke
+/*
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int sophantu,i=0,j=0,k;
+    do {
+        printf("Nhap so phan tu cua day: ");
+        scanf("%d",&sophantu);
+    } while (!(sophantu>0&&sophantu<=10));
+    float dayso[sophantu];
+    for (i=0;i<sophantu;i++) {
+        printf("Nhap phan tu thu %d: ",(i+1));
+        scanf("%f",&dayso[i]);
+    }
+    for (i=0; i<sophantu-1; i++)
+        for (j=i+1; j<sophantu; j++)
+            if (dayso[i]>dayso[j]) {
+                k=dayso[i];
+                dayso[i]=dayso[j];
+                dayso[j]=k;
+            }
+    printf("Day so sap xep tang dan la: ");
+    for (i=0; i<sophantu; i++) printf("%f ",dayso[i]);
+    printf("\nDay so sap xep giam dan la: ");
+    for (i=(sophantu-1); i>=0; i--) printf("%f ",dayso[i]);
+    printf("\n");
+    float daysoabs[sophantu];
+    for (i=0; i<sophantu; i++) daysoabs[i]=fabs(dayso[i]);
+    for (i=0; i<sophantu-1; i++)
+        for (j=i+1; j<sophantu; j++)
+            if (daysoabs[i]>daysoabs[j]) {
+                k=daysoabs[i];
+                daysoabs[i]=daysoabs[j];
+                daysoabs[j]=k;
+            }
+    printf("Day so giam dan theo gia tri tuyet doi la: ");
+    for (i=(sophantu-1);i>=0 ; i--) printf("%f ",daysoabs[i]);
+    return (0);
+}
+*/
+
+/* Theza bai 5.2
+#include <stdio.h>
+
+main()
+{int n,i,j;
+    float t,a[10];
+    do {printf("Nhap vao so phan tu cua day 0<n<=10 :");
+        scanf("%d",&n);}
+    while(n<=0||n>10);
+    printf("\n Nhap mang :");
+    for(i=0;i<n;i++)
+    {printf("\n Nhap so thu %d :",i+1);
+        scanf("%f",&a[i]);}
+    for(i=0;i<n-1;i++)
+        for(j=i+1;j<n;j++)
+            if (a[i]>a[j]) {t=a[i];a[i]=a[j];a[j]=t;}
+    printf("\n Day so theo thu tu tang dan la :\n");
+    for(i=0;i<n;i++) printf("%f   ",a[i]);
+    printf("\n Day so theo thu tu giam dan la :\n");
+    for(i=n-1;i>=0;i--) printf("%f   ",a[i]);
+    for(i=0;i<n-1;i++)
+        for(j=i+1;j<n;j++)
+            if (a[i]*a[i]<a[j]*a[j]) {t=a[i];a[i]=a[j];a[j]=t;}
+    printf("\n Day so theo thu tu giam dan theo gia tri tuyet doi la :\n");
+    for(i=0;i<n;i++) printf("%f   ",a[i]);
+}
+*/
+
+//Bai 5.3 oke
+/*
+#include <stdio.h>
+int main()
+{
+    int sophantu,i=0,k=0,l=0;
+    do {
+        printf("Nhap so phan tu cua day: ");
+        scanf("%d",&sophantu);
+    } while (!(sophantu>0&&sophantu<=10));
+    float manga[sophantu],mangb[sophantu],mangc[sophantu];
+    for (i=0;i<sophantu;i++) {
+        printf("Nhap phan tu thu %d: ",(i+1));
+        scanf("%f",&manga[i]);
+        if (manga[i]>0) {
+            mangb[k]=manga[i];
+            k++;
+        }
+        if (manga[i]<0) {
+            mangc[l]=manga[i];
+            l++;
+        }
+    }
+    printf("Mang b gom cac so: ");
+    for (i=0; i<k; i++) printf("%.4f ",mangb[i]);
+    printf("\nMang c gom cac so:");
+    for (i=0; i<l; i++) printf("%.4f ",mangc[i]);
+    printf("\n");
+    
+}
+*/
+
+//Bai 5.4 oke but... conio.h
+/*
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    int i,k,soHocSinh;
+    char dslop[10][30],temp[30];
+    do {
+        printf("Nhap so hoc sinh cua lop: ");
+        scanf("%d",&soHocSinh);
+    } while (!(soHocSinh<=10&&soHocSinh>0));
+    for (i=0; i<soHocSinh; i++) {
+        printf("Nhap ten hoc sinh: ");
+        getchar();
+        scanf("%[^\n]",&dslop[i]);
+    }
+    for (i=0; i<soHocSinh; i++)
+        for (k=i; k<soHocSinh; k++)
+            if (dslop[i]>dslop[k]) {
+                strcpy(temp, dslop[i]);
+                strcpy(dslop[i], dslop[k]);
+                strcpy(dslop[k], temp);
+            }
+    printf("Danh sach hoc sinh la: ");
+    for (i=0; i<soHocSinh; i++) printf("\n%s",dslop[i]);
+    printf("\n");
+    return (0);
+}
+*/
+
+//Bai 5.5 oke but... conio.h
+/*
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    struct Hoso {
+        char Hoten[40];
+        float Diem;
+        char Loai[10];
+    };
+    typedef struct Hoso Hoso;
+    int soHocSinh,i;
+    do {
+        printf("Nhap so hoc sinh: ");
+        scanf("%d",&soHocSinh);
+    } while (!(soHocSinh>=0));
+    Hoso Hocsinh[soHocSinh];
+    printf("Nhap thong tin cac hoc sinh:\n");
+    for (i=0; i<soHocSinh; i++) {
+        fflush(stdin);
+        printf("Nhap ho ten hoc sinh thu %d: ",(i+1));
+        getchar();
+        scanf("%[^\n]",&Hocsinh[i].Hoten);
+        do {
+            printf("Nhap diem cua hoc sinh thu %d: ",(i+1));
+            scanf("%f",&Hocsinh[i].Diem);
+        } while (!(Hocsinh[i].Diem>0));
+        if (Hocsinh[i].Diem>8.5&&Hocsinh[i].Diem<=10) strcpy(Hocsinh[i].Loai,"Gioi");
+        else if (Hocsinh[i].Diem>6.5&&Hocsinh[i].Diem<=8.5) strcpy(Hocsinh[i].Loai,"Kha");
+        else if (Hocsinh[i].Diem>=5&&Hocsinh[i].Diem<=6.5) strcpy(Hocsinh[i].Loai,"Trung binh");
+        else if (Hocsinh[i].Diem>=0&&Hocsinh[i].Diem<5) strcpy(Hocsinh[i].Loai,"Ko dat");
+    }
+    //Note doan code duoi.
+    printf("\n%40s","XEP LOAI VAN HOA");
+    printf("\n%-30s","HO VA TEN");
+    printf("%-20s","DIEM");
+    printf("%s","XEP LOAI");
+    for(i=0;i<soHocSinh;i++) printf("\n%-30s%-20.2f%s",Hocsinh[i].Hoten,Hocsinh[i].Diem,Hocsinh[i].Loai);
+    printf("\n");
+    return (0);
+}
+ */
+
+//Bai 5.6 oke
+/*
+#include <stdio.h>
+int main()
+{
+    int m,n,i,k;
+    printf("Nhap kich co ma tran:\n");
+    printf("So hang: ");
+    scanf("%d",&m);
+    printf("So cot: ");
+    scanf("%d",&n);
+    long matranA[m][n],matranB[m][n],matranC[m][n];
+    printf("Nhap ma tran A:\n");
+    for (i=0; i<m; i++)
+        for (k=0; k<n; k++) {
+            printf("A%d%d:",i+1,k+1);
+            scanf("%ld",&matranA[i][k]);
+        }
+    printf("Nhap ma tran B:\n");
+    for (i=0; i<m; i++)
+        for (k=0; k<n; k++) {
+            printf("B%d%d:",i+1,k+1);
+            scanf("%ld",&matranB[i][k]);
+        }
+    printf("\nMa tran A la:\n");
+    for (i=0; i<m; i++) {
+        for (k=0; k<n; k++)
+            printf("%6ld",matranA[i][k]);
+        printf("\n");
+    }
+    printf("\nMa tran B la:\n");
+    for (i=0; i<m; i++) {
+        for (k=0; k<n; k++)
+            printf("%6ld",matranB[i][k]);
+        printf("\n");
+    }
+    printf("\nMa tran tong C la:\n");
+    for (i=0; i<m; i++) {
+        for (k=0; k<n; k++) {
+            matranC[i][k]=matranA[i][k]+matranB[i][k];
+            printf("%6ld",matranC[i][k]);
+        }
+        printf("\n");
+    }
+    return (0);
+}
+ */
+
+//Bai 5.7 oke
+/*
+#include <stdio.h>
+int main()
+{
+    long m,n,k,i,j,x;
+    printf("Nhap kich co ma tran A (mxk):\n");
+    printf("So hang m: ");
+    scanf("%ld",&m);
+    printf("So cot k: ");
+    scanf("%ld",&k);
+    printf("Nhap kich co ma tran B (kxn):\n");
+    printf("So cot: ");
+    scanf("%ld",&n);
+    long matranA[m][k],matranB[k][n],matranC[m][n];
+    matranC[m][n]=0;
+    printf("Nhap ma tran A:\n");
+    for (i=0; i<m; i++)
+        for (j=0; j<k; j++) {
+            printf("A%ld%ld:",i+1,j+1);
+            scanf("%ld",&matranA[i][j]);
+        }
+    printf("Nhap ma tran B:\n");
+    for (i=0; i<k; i++)
+        for (j=0; j<n; j++) {
+            printf("B%ld%ld:",i+1,j+1);
+            scanf("%ld",&matranB[i][j]);
+        }
+    for (i=0; i<m; i++)
+        for (j=0; j<n; j++)
+            for (x=0; x<k; x++)
+                matranC[i][j]=matranC[i][j]+matranA[i][x]*matranB[x][j];
+    printf("\nMa tran C la:\n");
+    for (i=0; i<m; i++) {
+        for (k=0; k<n; k++)
+            printf("%6ld",matranC[i][k]);
+        printf("\n");
+    }
+    return (0);
+}
+*/
+
+//Bai 5.8 oke
+/*
+#include <stdio.h>
+
+void toigian(int *a,int *b)
+{
+    int i,UCLN = 1;
+    if (*a==*b) UCLN=*a;//Neu a=b?
+    else if (*a>*b) {
+        for (i=*b; i>=1; i--)
+            if (*a%i==0&&*b%i==0)
+            {
+                UCLN=i;
+                break;
+            } //Tim UCLN
+    }
+    else if (*a<*b) {
+       for (i=*a; i>=1; i--)
+           if (*a%i==0&&*b%i==0)
+           {
+               UCLN=i;
+               break;
+           } //Tim UCLN
+    }
+    if (UCLN!=1) {
+        *a=*a/UCLN;
+        *b=*b/UCLN;
+    }
+}
+
+int main()
+{
+    struct Phanso {
+        int tuso;
+        int mauso;
+    };
+    typedef struct Phanso Phanso;
+    Phanso pso1,pso2,tong,hieu,tich,thuong;
+    printf("Nhap phan so thu nhat:\n");
+    printf("Tu so: ");
+    scanf("%d",&pso1.tuso);
+    printf("Mau so: ");
+    scanf("%d",&pso1.mauso);
+    printf("Nhap phan so thu hai:\n");
+    printf("Tu so: ");
+    scanf("%d",&pso2.tuso);
+    printf("Mau so: ");
+    scanf("%d",&pso2.mauso);
+    tong.mauso=pso1.mauso*pso2.mauso;
+    tong.tuso=pso2.tuso*pso1.mauso+pso1.tuso*pso2.mauso;
+    hieu.mauso=pso1.mauso*pso2.mauso;
+    hieu.tuso=pso1.tuso*pso2.mauso-pso1.mauso*pso2.tuso;
+    tich.mauso=pso1.mauso*pso2.mauso;
+    tich.tuso=pso1.tuso*pso2.tuso;
+    thuong.mauso=pso1.mauso*pso2.tuso;
+    thuong.tuso=pso1.tuso*pso2.mauso;
+    toigian(&tong.tuso,&tong.mauso);
+    toigian(&hieu.tuso,&hieu.mauso);
+    toigian(&tich.tuso,&tich.mauso);
+    toigian(&thuong.tuso,&thuong.mauso);
+    printf("Tong hai phan so la: %d/%d\n",tong.tuso,tong.mauso);
+    printf("Hieu hai phan so la: %d/%d\n",hieu.tuso,hieu.mauso);
+    printf("Tich hai phan so la: %d/%d\n",tich.tuso,tich.mauso);
+    printf("Thuong hai phan so la: %d/%d\n",thuong.tuso,thuong.mauso);
+    return(0);
+ }
+ */
+
+//Bai 5.9 oke
+/*
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    char s1[100],s2[100];
+    printf("Nhap xau thu nhat: ");
+    scanf("%s",&s1);
+    printf("Nhap xau thu hai: ");
+    scanf("%s",&s2);
+    printf("Do dai xau 1 la: %ld\n",strlen(s1));
+    printf("Do dai xau 2 la: %ld\n",strlen(s2));
+    strcpy(s1, s2);
+    printf("Xau 1 sau khi thuc hien lenh strcpy(s1,s2) la: %s\n",s1);
+    printf("Xau 2 sau khi thuc hien lenh strcpy(s1,s2) la: %s\n",s2);
+    printf("Gia tri strcmp(s1,s2) la: %d\n",strcmp(s1, s2));
+    printf("Gia tri strcmp(s2,s1) la: %d\n",strcmp(s2, s1));
+    strcat(s1, s2);
+    printf("Xau 1 sau khi thuc hien lenh strcat(s1,s2) la: %s\n",s1);
+    printf("Xau 2 sau khi thuc hien lenh strcat(s1,s2) la: %s\n",s2);
+    return (0);
+}
+*/
+
+//Bai 5.10 oke
+/*
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main()
+{
+    char hoten[100],hotenmoi[100];
+    int i,k=0;
+    printf("Nhap ho ten cua nguoi do: ");
+    scanf("%[^\n]",&hoten);
+    for (i=0;i<strlen(hoten);i++)
+        if (hoten[i]!=' ') {
+            hotenmoi[k]=hoten[i];
+            k++;
+        }
+    printf("Ho va ten duoi dang chu thuong: ");
+    for (i=0; i<strlen(hotenmoi); i++)
+        printf("%c",tolower(hotenmoi[i]));
+    printf("\nHo va ten duoi dang chu hoa: ");
+    for (i=0; i<strlen(hotenmoi); i++)
+        printf("%c",toupper(hotenmoi[i]));
+    printf("\n");
+    return (0);
+}
+*/
+
+
