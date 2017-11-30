@@ -792,7 +792,7 @@ int main()
 }
  */
 
-//Bai 5.2 not oke
+//Bai 5.2 oke
 /*
 #include <stdio.h>
 #include <math.h>
@@ -816,9 +816,9 @@ int main()
                 dayso[j]=k;
             }
     printf("Day so sap xep tang dan la: ");
-    for (i=0; i<sophantu; i++) printf("%f ",dayso[i]);
+    for (i=0; i<sophantu; i++) printf("%.2f ",dayso[i]);
     printf("\nDay so sap xep giam dan la: ");
-    for (i=(sophantu-1); i>=0; i--) printf("%f ",dayso[i]);
+    for (i=(sophantu-1); i>=0; i--) printf("%.2f ",dayso[i]);
     printf("\n");
     float daysoabs[sophantu];
     for (i=0; i<sophantu; i++) daysoabs[i]=fabs(dayso[i]);
@@ -830,36 +830,8 @@ int main()
                 daysoabs[j]=k;
             }
     printf("Day so giam dan theo gia tri tuyet doi la: ");
-    for (i=(sophantu-1);i>=0 ; i--) printf("%f ",daysoabs[i]);
+    for (i=(sophantu-1);i>=0 ; i--) printf("%.2f ",daysoabs[i]);
     return (0);
-}
-*/
-
-/* Theza bai 5.2
-#include <stdio.h>
-
-main()
-{int n,i,j;
-    float t,a[10];
-    do {printf("Nhap vao so phan tu cua day 0<n<=10 :");
-        scanf("%d",&n);}
-    while(n<=0||n>10);
-    printf("\n Nhap mang :");
-    for(i=0;i<n;i++)
-    {printf("\n Nhap so thu %d :",i+1);
-        scanf("%f",&a[i]);}
-    for(i=0;i<n-1;i++)
-        for(j=i+1;j<n;j++)
-            if (a[i]>a[j]) {t=a[i];a[i]=a[j];a[j]=t;}
-    printf("\n Day so theo thu tu tang dan la :\n");
-    for(i=0;i<n;i++) printf("%f   ",a[i]);
-    printf("\n Day so theo thu tu giam dan la :\n");
-    for(i=n-1;i>=0;i--) printf("%f   ",a[i]);
-    for(i=0;i<n-1;i++)
-        for(j=i+1;j<n;j++)
-            if (a[i]*a[i]<a[j]*a[j]) {t=a[i];a[i]=a[j];a[j]=t;}
-    printf("\n Day so theo thu tu giam dan theo gia tri tuyet doi la :\n");
-    for(i=0;i<n;i++) printf("%f   ",a[i]);
 }
 */
 
