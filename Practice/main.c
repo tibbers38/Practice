@@ -866,7 +866,7 @@ int main()
 }
 */
 
-//Bai 5.4 oke but... conio.h not
+//Bai 5.4 oke but... conio.h
 /*
 #include <stdio.h>
 #include <string.h>
@@ -880,13 +880,14 @@ int main()
     } while (!(soHocSinh<=10&&soHocSinh>0));
     for (i=0; i<soHocSinh; i++) {
         fflush(stdin);
-        printf("Nhap ten hoc sinh: ");
+        printf("Nhap ten hoc sinh thu %d: ",(i+1));
         getchar(); //Co hay khong cung duoc.
         scanf("%[^\n]",&dslop[i]);
     }
     for (i=0; i<soHocSinh; i++)
         for (k=i; k<soHocSinh; k++)
-            if (dslop[i]>dslop[k]) {
+            if (strcmp(strrchr(dslop[i],' '),strrchr(dslop[k],' '))>0) {
+                //So sanh chu dau tien xuat hien tinh tu dau cach cuoi cung cua tu.
                 strcpy(temp, dslop[i]);
                 strcpy(dslop[i], dslop[k]);
                 strcpy(dslop[k], temp);
@@ -898,7 +899,7 @@ int main()
 }
 */
 
-//Bai 5.5 oke but... conio.h review.
+//Bai 5.5 oke but... conio.h
 /*
 #include <stdio.h>
 #include <string.h>
@@ -920,7 +921,7 @@ int main()
     for (i=0; i<soHocSinh; i++) {
         fflush(stdin);
         printf("Nhap ho ten hoc sinh thu %d: ",(i+1));
-        getchar(); //Bo dong nay
+        getchar(); //Bo dong nay trong dev-c
         scanf("%[^\n]",&Hocsinh[i].Hoten);
         do {
             printf("Nhap diem cua hoc sinh thu %d: ",(i+1));
@@ -940,7 +941,7 @@ int main()
     printf("\n");
     return (0);
 }
- */
+*/
 
 //Bai 5.6 oke
 /*
