@@ -866,7 +866,7 @@ int main()
 }
 */
 
-//Bai 5.4 oke but... conio.h
+//Bai 5.4 oke but... conio.h not
 /*
 #include <stdio.h>
 #include <string.h>
@@ -879,8 +879,9 @@ int main()
         scanf("%d",&soHocSinh);
     } while (!(soHocSinh<=10&&soHocSinh>0));
     for (i=0; i<soHocSinh; i++) {
+        fflush(stdin);
         printf("Nhap ten hoc sinh: ");
-        getchar();
+        getchar(); //Co hay khong cung duoc.
         scanf("%[^\n]",&dslop[i]);
     }
     for (i=0; i<soHocSinh; i++)
@@ -897,7 +898,7 @@ int main()
 }
 */
 
-//Bai 5.5 oke but... conio.h
+//Bai 5.5 oke but... conio.h review.
 /*
 #include <stdio.h>
 #include <string.h>
@@ -919,7 +920,7 @@ int main()
     for (i=0; i<soHocSinh; i++) {
         fflush(stdin);
         printf("Nhap ho ten hoc sinh thu %d: ",(i+1));
-        getchar();
+        getchar(); //Bo dong nay
         scanf("%[^\n]",&Hocsinh[i].Hoten);
         do {
             printf("Nhap diem cua hoc sinh thu %d: ",(i+1));
