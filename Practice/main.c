@@ -756,13 +756,13 @@ int main()
 #include <stdio.h>
 int main()
 {
-    int sophantu,i=0,demsoAm=0,demsoDuong=0,demso0=0;
+    int sopt,i=0,demsoAm=0,demsoDuong=0,demso0=0;
     do {
         printf("Nhap so phan tu cua day: ");
-        scanf("%d",&sophantu);
-    } while (!(sophantu>0&&sophantu<10));
-    double dayso[sophantu],tongAm=0,tongDuong=0,x;
-    for (i=0;i<sophantu;i++) {
+        scanf("%d",&sopt);
+    } while (!(sopt>0&&sopt<10));
+    double dayso[sopt],tongAm=0,tongDuong=0,x;
+    for (i=0;i<sopt;i++) {
         printf("Nhap phan tu thu %d: ",(i+1));
         scanf("%lf",&dayso[i]);
         if (dayso[i]<0) {
@@ -776,16 +776,15 @@ int main()
         else demso0++;
     }
     printf("Day so vua nhap la: ");
-    for (i=0;i<sophantu;i++)
+    for (i=0;i<sopt;i++)
         printf("%.2lf ",dayso[i]);
-    printf("\n");
-    printf("Trung binh cong cac so am la: %.4lf\n",(tongAm/demsoAm));
+    printf("\nTrung binh cong cac so am la: %.4lf\n",(tongAm/demsoAm));
     printf("Trung binh cong cac so duong la: %.4lf\n",(tongDuong/demsoDuong));
     printf("So cac so 0 trong day la: %d\n", demso0);
     printf("Nhap so x bat ki: ");
     scanf("%lf",&x);
     printf("Vi tri cac so trong day co gia tri bang x la: ");
-    for (i=0; i<sophantu; i++)
+    for (i=0; i<sopt; i++)
         if (x==dayso[i]) printf("%d ",(i+1));
     printf("\n");
     return (0);
@@ -798,39 +797,39 @@ int main()
 #include <math.h>
 int main()
 {
-    int sophantu,i=0,j=0,k;
+    int sopt,i=0,j=0,k;
     do {
         printf("Nhap so phan tu cua day: ");
-        scanf("%d",&sophantu);
-    } while (!(sophantu>0&&sophantu<=10));
-    float dayso[sophantu];
-    for (i=0;i<sophantu;i++) {
+        scanf("%d",&sopt);
+    } while (!(sopt>0&&sopt<=10));
+    float dayso[sopt];
+    for (i=0;i<sopt;i++) {
         printf("Nhap phan tu thu %d: ",(i+1));
         scanf("%f",&dayso[i]);
     }
-    for (i=0; i<sophantu-1; i++)
-        for (j=i+1; j<sophantu; j++)
+    for (i=0; i<sopt-1; i++)
+        for (j=i+1; j<sopt; j++)
             if (dayso[i]>dayso[j]) {
                 k=dayso[i];
                 dayso[i]=dayso[j];
                 dayso[j]=k;
             }
     printf("Day so sap xep tang dan la: ");
-    for (i=0; i<sophantu; i++) printf("%.2f ",dayso[i]);
+    for (i=0; i<sopt; i++) printf("%.2f ",dayso[i]);
     printf("\nDay so sap xep giam dan la: ");
-    for (i=(sophantu-1); i>=0; i--) printf("%.2f ",dayso[i]);
+    for (i=(sopt-1); i>=0; i--) printf("%.2f ",dayso[i]);
     printf("\n");
-    float daysoabs[sophantu];
-    for (i=0; i<sophantu; i++) daysoabs[i]=fabs(dayso[i]);
-    for (i=0; i<sophantu-1; i++)
-        for (j=i+1; j<sophantu; j++)
+    float daysoabs[sopt];
+    for (i=0; i<sopt; i++) daysoabs[i]=fabs(dayso[i]);
+    for (i=0; i<sopt-1; i++)
+        for (j=i+1; j<sopt; j++)
             if (daysoabs[i]>daysoabs[j]) {
                 k=daysoabs[i];
                 daysoabs[i]=daysoabs[j];
                 daysoabs[j]=k;
             }
     printf("Day so giam dan theo gia tri tuyet doi la: ");
-    for (i=(sophantu-1);i>=0 ; i--) printf("%.2f ",daysoabs[i]);
+    for (i=(sopt-1);i>=0 ; i--) printf("%.2f ",daysoabs[i]);
     return (0);
 }
 */
@@ -1148,6 +1147,33 @@ int main()
     for (i=0; i<strlen(hotenmoi); i++)
         printf("%c",toupper(hotenmoi[i]));
     printf("\n");
+    return (0);
+}
+*/
+
+//malloc using:
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+    int i,*tuoibanbe;
+    int sobanbe;
+    printf("Nhap so luong ban be: ");
+    scanf("%d",&sobanbe);
+    tuoibanbe=malloc(sobanbe*sizeof(int));
+    if (tuoibanbe==NULL) {
+        exit(0);
+    }
+    for (i=0; i<sobanbe; i++) {
+        printf("Nhap tuoi ban thu %d:",(i+1));
+        scanf("%d",&tuoibanbe[i]);
+    }
+    for (i=0; i<sobanbe; i++) {
+        printf("Tuoi cua ban thu %d la: %d\n",(i+1),tuoibanbe[i]);
+    }
+    free(tuoibanbe);
     return (0);
 }
 */
